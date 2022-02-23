@@ -2,9 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        <link href="{{asset('asset/css/bootstrap.min.css')}}" rel="stylesheet">
+        <title>{% block title %}🦝{% endblock %}</title>
+        <link rel="icon" href="assets/images/raccoon_1f99d.png">
+        <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -14,7 +15,55 @@
         {% endblock %}
     </head>
     <body>
+        <header style="margin-bottom: 2%;">
+            {# Nav Bar #}
+            <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><img src="{{asset('assets/images/raccoon_1f99d.png')}}" alt="raccoon" width="50px"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{path('accueil')}}">Accueil</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Produit
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark bg-warning" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item " href="#">Produit1</a></li>
+                                <li><a class="dropdown-item" href="#">Produit2</a></li>
+                                <li><a class="dropdown-item" href="#">Produit3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{path('contact')}}">Contact</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+
         {% block body %}{% endblock %}
-        <link href="{{asset('asset/js/bootstrap.bundle.min.js')}}" rel="stylesheet">
+
+        <footer class="text-center bg-primary" style="margin-top: 2%;">
+            <div>
+                TC Web 2022
+            </div>
+
+            <div>
+                <a href="mentions" style="text-decoration: none; color:white;">Mentions Légales</a>
+            </div>
+        </footer>
+
+        <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     </body>
 </html>
