@@ -3,9 +3,9 @@
 {% block title %}Produit index{% endblock %}
 
 {% block body %}
-    <h1>Produit index</h1>
+    <h1 class="text-center">Produit index</h1>
 
-    <table class="table">
+    <table class="table container">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,17 +23,19 @@
                 <td>{{ produit.Prix }}</td>
                 <td>{{ produit.Picture }}</td>
                 <td>
-                    <a href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
-                    <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
+                    <a href="{{ path('produit_show', {'id': produit.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('produit_edit', {'id': produit.id}) }}" class="btn btn-primary">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Pas de Produit Enregistrer</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('produit_new') }}">Create new</a>
+    <div class="container">
+        <a href="{{ path('produit_new') }}" class="btn btn-primary">New Produit</a>
+    </div>
 {% endblock %}
