@@ -1,5 +1,5 @@
 :root {
-    --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
+    --gradient: linear-gradient(to left top, #3724dd 10%, #2f4eff 90%) !important;
 }
   
 body {
@@ -8,12 +8,12 @@ body {
   
 .card {
     background: #222;
-    border: 1px solid #dd2476;
+    border: 1px solid blue;
     color: rgba(250, 250, 250, 0.8);
     margin-bottom: 2rem;
 }
   
-.btn {
+.button {
     border: 5px solid;
     border-image-slice: 1;
     background: var(--gradient) !important;
@@ -24,7 +24,7 @@ body {
     transition: all .4s ease;
 }
   
-.btn:hover, .btn:focus {
+.button:hover, .button:focus {
     background: var(--gradient) !important;
     -webkit-background-clip: none !important;
     -webkit-text-fill-color: #fff !important;
