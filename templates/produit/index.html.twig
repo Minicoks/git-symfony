@@ -12,7 +12,8 @@
                 <th>Nom</th>
                 <th>Prix</th>
                 <th>Picture</th>
-                <th>actions</th>
+                <th>Category</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,9 +23,11 @@
                 <td>{{ produit.Nom }}</td>
                 <td>{{ produit.Prix }}</td>
                 <td>{{ produit.Picture }}</td>
+                <td>{{ produit.category }}</td>
+
                 <td>
-                    <a href="{{ path('produit_show', {'id': produit.id}) }}" class="btn btn-primary">show</a>
-                    <a href="{{ path('produit_edit', {'id': produit.id}) }}" class="btn btn-primary">edit</a>
+                    <a href="{{ path('produit_show', {'id': produit.id}) }}" class="btn btn-primary">Show</a>
+                    <a href="{{ path('produit_edit', {'id': produit.id}) }}" class="btn btn-primary">Edit</a>
                 </td>
             </tr>
         {% else %}
