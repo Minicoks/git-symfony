@@ -2,9 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Produit;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ProduitRepository;
+use App\Form\ProduitType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AccueilController extends AbstractController
 {
@@ -13,6 +20,15 @@ class AccueilController extends AbstractController
     {
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'Accueil',
+        ]);
+    }
+
+    #[Route('/PresentationProduit', name: 'presentationProduit', methods: ['GET'])]
+    public function boulangerie(ProduitRepository $produitRepository): Response
+    {
+        return $this->render('prod/index.html.twig', [
+            'controller_name' => 'Produit',
+            'produits' => $produitRepository->findAll()
         ]);
     }
 
@@ -31,4 +47,5 @@ class AccueilController extends AbstractController
             'controller_name' => 'Mentions Légales',
         ]);
     }
+
 }
