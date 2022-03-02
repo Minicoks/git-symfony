@@ -28,31 +28,45 @@
                         <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{path('accueil')}}">Accueil</a>
                         </li>
+                        {% if is_granted('ROLE_ADMIN')%}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="{{path('presentationProduit')}}" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Admin
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark bg-warning" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item " href="{{path('presentationProduit')}}">Produit1</a></li>
-                        {% if is_granted('ROLE_ADMIN')%}
                                 <li><a class="dropdown-item" href="{{path('category_index')}}">Produit2</a></li>
                                 <li><a class="dropdown-item" href="{{path('produit_index')}}">Produit3</a></li>
-                        {% endif %}
+                        
                             </ul>
                         </li>
-                        
+                        {% elseif is_granted('ROLE_USER') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path('presentationProduit')}}">Produit</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('contact')}}">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('login')}}">Login</a>
                         </li>
+                        {% if is_granted('ROLE_USER')%}
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('app_logout')}}">Logout</a>
                         </li>
+                        {% endif %}
+                        {% if is_granted('ROLE_USER')%}
+                        {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('app_register')}}">Register</a>
                         </li>
+                        {% endif %}
+                        {% if is_granted('ROLE_USER')%}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('profil')}}">Profil</a>
+                        </li>
+                        {% endif %}
                     </ul>
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
