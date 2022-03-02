@@ -48,4 +48,12 @@ class AccueilController extends AbstractController
         ]);
     }
 
+    #[Route('/profil', name: 'profil')]
+    public function indexProfile(): Response
+    {
+        return $this->render('profile/index.html.twig', [
+            'controller_name' => 'Ton Profil',
+        ]);
+    }
+
 }
