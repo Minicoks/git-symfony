@@ -29,15 +29,17 @@
                         <a class="nav-link active" aria-current="page" href="{{path('accueil')}}">Accueil</a>
                         </li>
                         {% if is_granted('ROLE_ADMIN')%}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path('presentationProduit')}}">Produit</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="{{path('presentationProduit')}}" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Admin
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark bg-warning" aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <li><a class="dropdown-item " href="{{path('presentationProduit')}}">Produit1</a></li>
-                                    <li><a class="dropdown-item" href="{{path('category_index')}}">Produit2</a></li>
-                                    <li><a class="dropdown-item" href="{{path('produit_index')}}">Produit3</a></li>
-                            
+                                    <li><a class="dropdown-item " href="{{path('produit_index')}}">Produit</a></li>
+                                    <li><a class="dropdown-item" href="{{path('category_index')}}">Categorie</a></li>
+                                    <li><a class="dropdown-item" href="{{path('user_index')}}">User</a></li>
                                 </ul>
                             </li>
                         {% elseif is_granted('ROLE_USER') %}

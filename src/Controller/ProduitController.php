@@ -20,7 +20,7 @@ class ProduitController extends AbstractController
     #[Route('/', name: 'produit_index', methods: ['GET'])]
     public function index(ProduitRepository $produitRepository): Response
     {
-        if($this->getUser()){
+        if($this->denyAccessUnlessGranted('ROLE_ADMIN')){
             return $this->redirectToRoute('presentationProduit');
         }
         
@@ -29,13 +29,19 @@ class ProduitController extends AbstractController
         ]);
     }
 
+    #[Route('/promo', name: 'promo', methods: ['GET'])]
+    public function promo(ProduitRepository $produitRepository): Response
+    {
+        $value = 1;
+
+        return $this->render('produit/index.html.twig', [
+            'produits' => $produitRepository->findAllLessThan($value),
+        ]);
+    }
+
     #[Route('/new', name: 'produit_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
-        if($this->getUser()){
-            return $this->redirectToRoute('presentationProduit');
-        }
-
         $produit = new Produit();
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
