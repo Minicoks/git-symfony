@@ -19,6 +19,21 @@ class ProduitRepository extends ServiceEntityRepository
         parent::__construct($registry, Produit::class);
     }
 
+    public function findAllLessThan(int $value): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Produit p
+            WHERE p.Prix > :Prix
+            ORDER BY p.Prix ASC'
+        )->setParameter('Prix', $value);
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Produit[] Returns an array of Produit objects
     //  */
